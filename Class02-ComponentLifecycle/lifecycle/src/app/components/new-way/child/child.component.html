@@ -1,0 +1,14 @@
+<section>
+    <div>
+        <h2>Child Component</h2>
+        <p>Counter: {{counter()}}</p>
+        <p>Name: {{name()}}</p>
+
+        <br>
+    </div>
+
+    <div>
+        <input type="text" placeholder="Enter To-do" [(ngModel)]="todoName">
+        <button (click)="createTodo()">Create To-do</button>
+    </div>
+</section>
