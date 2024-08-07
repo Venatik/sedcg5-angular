@@ -1,0 +1,19 @@
+<section>
+    <h3>Recipe List: </h3>
+    <ul>
+        <!-- <li>
+            <app-single-recipe [title]="recipes[0].name" [description]="recipes[0].description"
+                [foodHasAllergens]="recipes[0].hasAllergens" />
+        </li>
+        <li>
+            <app-single-recipe [title]="recipes[1].name" [description]="recipes[1].description"
+                [foodHasAllergens]="recipes[1].hasAllergens" />
+        </li> -->
+
+        <!-- BETTER DYNAMIC WAY -->
+        <li *ngFor="let recipe of recipes">
+            <app-single-recipe [title]="recipe.name" [description]="recipe.description"
+                [foodHasAllergens]="recipe.hasAllergens" />
+        </li>
+    </ul>
+</section>
