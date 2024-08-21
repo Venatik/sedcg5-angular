@@ -17,11 +17,10 @@ export class ComponentBComponent {
   constructor(private readonly messageService: MessageService) {}
 
   ngOnInit() {
-    // const message = this.messageService.getMessage();
-    // console.log("1. The message in Component B from Service", message);
+    console.log("NG ON INIT");
 
     this.messageService.message.subscribe(value => {
-      console.log("2. The message in Component B from Service:", value);
+      console.log("The message in Component B from Service:", value);
 
       this.messageFromService = value;
     });
@@ -30,8 +29,4 @@ export class ComponentBComponent {
       console.log(value);
     });
   }
-
-  // updateMessage() {
-  //   this.messageFromService = this.messageService.getMessage();
-  // }
 }
