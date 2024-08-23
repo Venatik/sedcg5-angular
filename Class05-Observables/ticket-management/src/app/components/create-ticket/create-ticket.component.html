@@ -1,0 +1,13 @@
+<section class="inputsContainer">
+    <!-- ngModel is two-way data binding -->
+    <input type="text" placeholder="Ticket Title" [(ngModel)]="title">
+    <textarea cols="40" rows="10" [(ngModel)]="description"></textarea>
+    <select [(ngModel)]="assignee">
+        @for (assignee of possibleAssignees; track assignee) {
+        <!-- This is property binding. The square brackets indicate that we're binding the value property of the option element. -->
+        <option [value]="assignee">{{assignee}}</option>
+        }
+    </select>
+
+    <button (click)="handleSubmit()">Create Ticket</button>
+</section>
