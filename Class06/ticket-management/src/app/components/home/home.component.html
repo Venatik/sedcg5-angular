@@ -1,0 +1,10 @@
+<div class="filters">
+    <input type="text" placeholder="Filter by Ticket Name" class="titleFilter" (keyup)="onInputChange($event)">
+</div>
+
+<section class="ticketsContainer">
+    <!-- The first argument is the value BEFORE the | operator -->
+    @for(ticket of tickets() | filter: searchValue(); track ticket.id) {
+    <app-ticket [ticket]="ticket" />
+    }
+</section>

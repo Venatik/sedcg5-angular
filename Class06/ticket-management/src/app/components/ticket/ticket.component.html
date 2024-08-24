@@ -1,0 +1,20 @@
+<article class="ticketCard" [ngClass]="{
+    completed: ticket().status === 'DONE',
+    inProgress: ticket().status === 'IN_DEVELOPMENT'
+}">
+    <h2>{{ticket().title | uppercase}}</h2>
+    <p>{{ticket().description}}</p>
+    <p [class.completed-text]="ticket().status === 'DONE'"
+        [class.inProgress-text]="ticket().status === 'IN_DEVELOPMENT'">
+        {{ticket().status | ticketStatus}}</p>
+    <p>{{ticket().assignee}}</p>
+    <p>{{ticket().createdAt | date:'MMM dd, yyyy'}}</p>
+
+    <select [(ngModel)]="this.ticket().status" (change)="onSelectedStatusChange($event)">
+        @for (status of statuses; track status) {
+        <option [value]="status">{{status}}</option>
+        }
+    </select>
+
+    <button class="removeBtn" (click)="onRemoveTicket()">X</button>
+</article>
