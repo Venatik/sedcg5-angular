@@ -3,6 +3,7 @@ import { TicketComponent } from "../ticket/ticket.component";
 import { TicketService } from "../../services/ticket.service";
 import { Ticket } from "../../types/ticket.interface";
 import { FilterPipe } from "../../pipes/filter.pipe";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-home",
@@ -15,10 +16,13 @@ export class HomeComponent {
   tickets = signal<Ticket[]>([]);
   searchValue = signal("");
 
+  private subscription: Subscription;
+
   constructor(private readonly ticketService: TicketService) {}
 
   ngOnInit() {
-    this.ticketService.tickets$.subscribe(tickets => {
+    this.subscription = this.ticketService.tickets$.subscribe(tickets => {
+      // console.log("SUBSCRIBE IN HOME");
       this.tickets.set(tickets);
     });
   }
@@ -29,5 +33,9 @@ export class HomeComponent {
     // console.log(value);
 
     this.searchValue.set(value);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
