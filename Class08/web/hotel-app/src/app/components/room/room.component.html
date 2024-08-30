@@ -9,6 +9,32 @@
             {{room().description}}
         </p>
     </mat-card-content>
+
+    <!-- ACCORDION START -->
+    <mat-accordion>
+        <mat-expansion-panel (opened)="openPanel(true)" (closed)="openPanel(false)">
+
+            <mat-expansion-panel-header>
+                <mat-panel-title>{{panelOpenState() ? 'Hide' : 'Show'}}</mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <div>
+                <mat-icon aria-hidden="false" [matBadge]="room().beds">bed</mat-icon>
+                <mat-icon aria-hidden="false" [matBadge]="room().baths">shower</mat-icon>
+                <mat-icon aria-hidden="false" [matBadge]="room().guestCapacity">group</mat-icon>
+
+                @if (room().hasAirConditioning) {
+                <mat-icon aria-hidden="false" matTooltip="Room has AC">hvac</mat-icon>
+                }
+
+                @if (room().isPetFriendly) {
+                <mat-icon aria-hidden="false" matTooltip="Room is pet friendly">pets</mat-icon>
+                }
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- ACCORDION -->
+
     <mat-card-actions>
         <button mat-button>DETAILS</button>
         <button mat-button>SHARE</button>
