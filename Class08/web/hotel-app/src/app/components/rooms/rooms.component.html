@@ -1,1 +1,5 @@
-<p>rooms works!</p>
+<section class="roomsContainer">
+    @for (room of rooms(); track room.id) {
+    <app-room [room]="room" />
+    }
+</section>
