@@ -1,1 +1,6 @@
-<p>home works!</p>
+<div>
+    <app-rooms [rooms]="(rooms | async) || []" />
+
+    <mat-paginator [length]="total()" [pageSize]="pageSize()" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+        aria-label="Select Page" (page)="pageSize.set($event.pageSize); page.set($event.pageIndex)" />
+</div>

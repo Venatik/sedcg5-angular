@@ -11,6 +11,7 @@ import { TooltipPosition, MatTooltipModule } from "@angular/material/tooltip";
 import { CdkScrollable } from "@angular/cdk/scrolling";
 import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatChipsModule } from "@angular/material/chips";
 
 @Component({
   selector: "app-room",
@@ -30,6 +31,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     CdkScrollable,
     MatButtonModule,
     MatTooltipModule,
+    MatChipsModule,
   ],
   templateUrl: "./room.component.html",
   styleUrl: "./room.component.css",
