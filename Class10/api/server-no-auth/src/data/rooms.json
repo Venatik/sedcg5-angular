@@ -1,0 +1,115 @@
+"payload": [
+    {
+        "id": "b175403d-b639-422b-8bac-42a3cf422e0b",
+        "name": "Deluxe Sea View Suite",
+        "description": "Luxurious suite with panoramic sea views, featuring a king-sized bed, separate living area, and a private balcony. Amenities include free Wi-Fi, flat-screen TV, minibar, and a spacious bathroom with a jacuzzi.",
+        "type": "Suite",
+        "pricePerNight": 350,
+        "beds": 1,
+        "extraBeds": 1,
+        "baths": 2,
+        "guestCapacity": 3,
+        "view": "Sea",
+        "images": [
+            "./room-images/deluxe-sea-view-suite.webp",
+            "./room-images/deluxe-sea-view-suite-2.webp"
+        ],
+        "city": "Split",
+        "country": "Croatia",
+        "parking": "None",
+        "board": "None",
+        "isPetFriendly": false,
+        "hasAirConditioning": true,
+        "bookingsCount": 0
+    },
+    {
+        "id": "83d23e8e-e2c9-40a7-8c34-daebe6fdd8e4",
+        "name": "Economy Single Room",
+        "description": "Compact and affordable single room, perfect for solo travelers. Equipped with all necessary amenities for a comfortable stay.",
+        "type": "Single",
+        "pricePerNight": 100,
+        "beds": 1,
+        "extraBeds": 0,
+        "baths": 1,
+        "guestCapacity": 1,
+        "view": "None",
+        "images": [
+            "./room-images/economy-single-room.webp"
+        ],
+        "city": "Pula",
+        "country": "Croatia",
+        "parking": "Free",
+        "board": "Breakfast Only",
+        "isPetFriendly": false,
+        "hasAirConditioning": false,
+        "bookingsCount": 0
+    },
+    {
+        "id": "7e55aa7d-6f33-4912-9258-61796827b735",
+        "name": "Family Pool View Room",
+        "description": "Spacious family room overlooking the hotel's pool, featuring two queen-sized beds, a sitting area, and a private balcony. Perfect for families or groups.",
+        "type": "Family",
+        "pricePerNight": 280,
+        "beds": 2,
+        "extraBeds": 1,
+        "baths": 1,
+        "guestCapacity": 5,
+        "view": "Pool",
+        "images": [
+            "./room-images/family-pool-view-room.webp",
+            "./room-images/family-pool-view-room-balcony.webp"
+        ],
+        "city": "Zadar",
+        "country": "Croatia",
+        "parking": "Paid",
+        "board": "Half Board",
+        "isPetFriendly": false,
+        "hasAirConditioning": true,
+        "bookingsCount": 0
+    },
+    {
+        "id": "0d8c4221-5823-486c-8bf1-88cbc47c4262",
+        "name": "Garden View Double Room",
+        "description": "Cozy double room with beautiful garden views, featuring a comfortable queen-sized bed and modern amenities including free Wi-Fi and a flat-screen TV.",
+        "type": "Double",
+        "pricePerNight": 180,
+        "beds": 1,
+        "extraBeds": 0,
+        "baths": 1,
+        "guestCapacity": 2,
+        "view": "Garden",
+        "images": [
+            "./room-images/garden-view-double.webp"
+        ],
+        "city": "Dubrovnik",
+        "country": "Croatia",
+        "parking": "Free",
+        "board": "Breakfast Only",
+        "isPetFriendly": true,
+        "hasAirConditioning": true,
+        "bookingsCount": 0
+    },
+    {
+        "id": "b2b54331-671b-4d13-af70-ad8b9569de08",
+        "name": "Standard Twin Room",
+        "description": "Comfortable twin room with two single beds, ideal for friends or colleagues traveling together. Includes essential amenities for a pleasant stay.",
+        "type": "Twin",
+        "pricePerNight": 150,
+        "beds": 2,
+        "extraBeds": 0,
+        "baths": 1,
+        "guestCapacity": 2,
+        "view": "None",
+        "images": [
+            "./room-images/standard-twin-room.webp"
+        ],
+        "city": "Zagreb",
+        "country": "Croatia",
+        "parking": "None",
+        "board": "None",
+        "isPetFriendly": false,
+        "hasAirConditioning": true,
+        "bookingsCount": 0
+    }
+],
+"total": 5,
