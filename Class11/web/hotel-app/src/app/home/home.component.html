@@ -1,0 +1,11 @@
+<div>
+    <app-search [searchTerm]="roomsStore.searchTerm()"
+        (updateSearchTerm)="roomsStore.setSearchTerm($event.target.value)" />
+
+    <app-loader [isLoading]="roomsStore.isLoading()" />
+    <app-rooms [rooms]="roomsStore.rooms()" />
+
+    <mat-paginator [length]="roomsStore.total()" [pageSize]="roomsStore.pageSize()" [pageIndex]="roomsStore.page()"
+        [pageSizeOptions]="[5, 10, 25, 50, 100]" aria-label="Select Page"
+        (page)="roomsStore.setPageSize($event.pageSize); roomsStore.setPage($event.pageIndex)" />
+</div>
