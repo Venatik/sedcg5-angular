@@ -1,0 +1,45 @@
+.card {
+  margin-top: 50px;
+  max-width: 400px;
+  height: 660px;
+  color: white;
+}
+
+mat-card-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #015cbb;
+}
+
+mat-card-subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #015cbb;
+}
+
+mat-card-content > p {
+  font-size: 14px;
+  padding: 5px 0;
+  color: darkslategray;
+  display: -webkit-box;
+  font-weight: 500;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-image {
+  overflow: hidden;
+  height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-actions {
+  gap: 5px;
+  flex-wrap: wrap;
+}
