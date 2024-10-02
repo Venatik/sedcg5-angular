@@ -1,15 +1,22 @@
-import { Component } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
-import { HeaderComponent } from "./header/header.component";
-import { GuestsComponent } from "./guests/guests.component";
-import { NotFoundComponent } from "./not-found/not-found.component";
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import { GuestsComponent } from './guests/guests.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @Component({
-  selector: "app-root",
+  selector: 'app-root',
   standalone: true,
-  // No need to import anything other than RouterOutlet and HeaderComponent. We access them with routing.
-  imports: [RouterOutlet, HeaderComponent],
-  templateUrl: "./app.component.html",
-  styleUrl: "./app.component.css",
+  imports: [
+    RouterOutlet, 
+    HeaderComponent,
+    // No need to import these components since we do not use the directly in the app.component.html
+    // HomeComponent,
+    // GuestsComponent,
+    // NotFoundComponent
+  ],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
 })
 export class AppComponent {}

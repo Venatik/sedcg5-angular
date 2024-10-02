@@ -1,33 +1,25 @@
 .card {
-  margin-top: 50px;
   max-width: 400px;
-  height: 660px;
+  height: 560px;
   color: white;
 }
 
 mat-card-title {
   font-size: 16px;
   font-weight: bold;
-  color: #015cbb;
+  color: green;
 }
 
 mat-card-subtitle {
   font-size: 14px;
-  font-weight: 500;
-  color: #015cbb;
+  font-weight: normal;
+  color: gray;
 }
 
 mat-card-content > p {
   font-size: 14px;
   padding: 5px 0;
   color: darkslategray;
-  display: -webkit-box;
-  font-weight: 500;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .card-image {
@@ -42,4 +34,9 @@ mat-card-content > p {
 .card-actions {
   gap: 5px;
   flex-wrap: wrap;
+}
+
+a {
+  text-decoration: none;
+  color: aqua;
 }

@@ -4,8 +4,8 @@ ul {
   padding: 0;
   display: flex;
   justify-content: space-around;
-}
 
-li {
-  cursor: pointer;
+  li {
+    cursor: pointer;
+  }
 }

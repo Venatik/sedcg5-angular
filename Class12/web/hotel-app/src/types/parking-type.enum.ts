@@ -1,5 +1,5 @@
 export enum ParkingType {
-  None = "None",
-  Free = "Free",
-  Paid = "Paid",
+  None = 'None',
+  Free = 'Free',
+  Paid = 'Paid',
 }

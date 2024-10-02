@@ -1,8 +1,8 @@
-import { SortDirection } from "@angular/material/sort";
 import { Board } from "./board.enum";
 import { ParkingType } from "./parking-type.enum";
 import { RoomType } from "./room-type.enum";
 import { RoomView } from "./room-view.enum";
+import { SortDirection } from "./sort-direction.enum";
 
 export interface SearchRoomQuery {
   searchTerm?: string;
@@ -14,7 +14,7 @@ export interface SearchRoomQuery {
   baths?: number;
   guestCapacity?: number;
   view?: RoomView;
-  parking?: ParkingType;
+  parking?: ParkingType,
   isPetFriendly?: boolean;
   board?: Board;
   hasAirConditioning?: boolean;
@@ -25,5 +25,3 @@ export interface SearchRoomQuery {
   sortBy?: string;
   sortDirection?: SortDirection;
 }
-
-// Properties aren't optional because Partial<SearchRoomQuery> is added in the service. Partial makes all properties optional.

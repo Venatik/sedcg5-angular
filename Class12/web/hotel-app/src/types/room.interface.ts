@@ -1,7 +1,7 @@
-import { Board } from "./board.enum";
-import { ParkingType } from "./parking-type.enum";
-import { RoomType } from "./room-type.enum";
-import { RoomView } from "./room-view.enum";
+import { Board } from './board.enum';
+import { ParkingType } from './parking-type.enum';
+import { RoomType } from './room-type.enum';
+import { RoomView } from './room-view.enum';
 
 export interface Room {
   id: string;
@@ -18,8 +18,7 @@ export interface Room {
   city: string;
   country: string;
   parking: ParkingType;
-  board: Board;
   isPetFriendly: boolean;
+  board: Board;
   hasAirConditioning: boolean;
-  bookingsCount: number;
 }
