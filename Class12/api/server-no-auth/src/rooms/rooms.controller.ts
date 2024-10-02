@@ -32,8 +32,8 @@ import { RolesValidationType } from '../common/types/roles-validation-type.enum'
 import { RolesGuard } from '../common/guards/roles.guard';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 
-// @ApiBearerAuth()
-// @UseGuards(JwtAuthGuard, RolesGuard)
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard, RolesGuard)
 @ApiTags('Rooms')
 @Controller('rooms')
 export class RoomsController {
@@ -52,10 +52,10 @@ export class RoomsController {
   @ApiInternalServerErrorResponse({
     description: 'Internal server error',
   })
-  // @Roles(
-  //   [UserRole.Employee, UserRole.Admin],
-  //   RolesValidationType.HasSomeOfThese,
-  // )
+  @Roles(
+    [UserRole.Employee, UserRole.Admin],
+    RolesValidationType.HasSomeOfThese,
+  )
   create(@Body() createRoomDto: CreateRoomDto) {
     return this.roomsService.create(createRoomDto);
   }
@@ -73,10 +73,10 @@ export class RoomsController {
   @ApiInternalServerErrorResponse({
     description: 'Internal server error',
   })
-  // @Roles(
-  //   [UserRole.Guest, UserRole.Employee, UserRole.Admin],
-  //   RolesValidationType.HasSomeOfThese,
-  // )
+  @Roles(
+    [UserRole.Guest, UserRole.Employee, UserRole.Admin],
+    RolesValidationType.HasSomeOfThese,
+  )
   findAll(@Query() searchQuery: SearchQueryDto): Promise<Response<Room[]>> {
     return this.roomsService.findAll(searchQuery);
   }
@@ -94,10 +94,10 @@ export class RoomsController {
   @ApiInternalServerErrorResponse({
     description: 'Internal server error',
   })
-  // @Roles(
-  //   [UserRole.Guest, UserRole.Employee, UserRole.Admin],
-  //   RolesValidationType.HasSomeOfThese,
-  // )
+  @Roles(
+    [UserRole.Guest, UserRole.Employee, UserRole.Admin],
+    RolesValidationType.HasSomeOfThese,
+  )
   findOne(@Param('id') id: string) {
     return this.roomsService.findOne(id);
   }
@@ -115,10 +115,10 @@ export class RoomsController {
   @ApiInternalServerErrorResponse({
     description: 'Internal server error',
   })
-  // @Roles(
-  //   [UserRole.Employee, UserRole.Admin],
-  //   RolesValidationType.HasSomeOfThese,
-  // )
+  @Roles(
+    [UserRole.Employee, UserRole.Admin],
+    RolesValidationType.HasSomeOfThese,
+  )
   update(@Param('id') id: string, @Body() updateRoomDto: UpdateRoomDto) {
     return this.roomsService.update(id, updateRoomDto);
   }
@@ -135,10 +135,10 @@ export class RoomsController {
   @ApiInternalServerErrorResponse({
     description: 'Internal server error',
   })
-  // @Roles(
-  //   [UserRole.Employee, UserRole.Admin],
-  //   RolesValidationType.HasSomeOfThese,
-  // )
+  @Roles(
+    [UserRole.Employee, UserRole.Admin],
+    RolesValidationType.HasSomeOfThese,
+  )
   remove(@Param('id') id: string) {
     return this.roomsService.remove(id);
   }
@@ -157,7 +157,7 @@ export class RoomsController {
   @ApiInternalServerErrorResponse({
     description: 'Internal server error',
   })
-  // @Roles([UserRole.Admin], RolesValidationType.HasAllOfThese)
+  @Roles([UserRole.Admin], RolesValidationType.HasAllOfThese)
   backfillRooms(@Query() query: BackfillRoomsQuery) {
     return this.roomsService.backfillRooms(query.count);
   }

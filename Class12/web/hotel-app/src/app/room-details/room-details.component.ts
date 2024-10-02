@@ -2,7 +2,7 @@ import { Component, signal } from "@angular/core";
 import { catchError, Observable, of, switchMap, tap } from "rxjs";
 import { Room } from "../../types/room.interface";
 import { RoomsService } from "../../services/room.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { AsyncPipe, CurrencyPipe } from "@angular/common";
 
 @Component({
@@ -18,7 +18,8 @@ export class RoomDetailsComponent {
 
   constructor(
     private readonly roomService: RoomsService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
   ) {}
 
   ngOnInit() {
@@ -31,6 +32,15 @@ export class RoomDetailsComponent {
       switchMap(params => this.roomService.getRoom(params["id"])),
       catchError(error => {
         console.log(error);
+        if (error.statusCode === 404) {
+          this.router.navigate(["/not-found"]);
+        }
+
+        if (error.statusCode > 499 && error.statusCode < 600) {
+          console.log(error);
+          // Track the error so it can be handled and fix the issue in the future
+        }
+
         return of(null);
       }),
       tap(() => this.isLoading.set(false))
