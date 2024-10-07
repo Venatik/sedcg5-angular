@@ -1,21 +1,26 @@
 <nav>
   <ul>
     <li>
-      <a routerLink="/" routerLinkActive="active">Home</a>
+      <!-- localhost:4200 -->
+      <!-- [routerLinkActiveOptions]="{exact: true} will make the route active only if route is: localhost:4200 -->
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
     </li>
+
     <li>
+      <!-- localhost:4200/rooms -->
       <a routerLink="/rooms" routerLinkActive="active">Rooms</a>
     </li>
+
     <li>
       <a routerLink="/guests" routerLinkActive="active">Guests</a>
     </li>
 
     <li>
       @if (isLoggedIn()) {
-        <span>Hello "your_name"</span>
-        <span (click)="logout()">Logout</span>
+      <span>Hello {{currentUser().email}} </span>
+      <span (click)="logout()">Logout</span>
       } @else {
-        <a routerLink="/login">Login</a>
+      <a routerLink="/login">Login</a>
       }
     </li>
   </ul>

@@ -1,26 +1,17 @@
-<table
-  mat-table
-  [dataSource]="roomsStore.rooms()"
->
+<table mat-table [dataSource]="roomsStore.rooms()">
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       Name
     </th>
     <td mat-cell *matCellDef="let element">
-      <a routerLink="/rooms/{{ element.id }}">{{ element.name }}</a>
+      <a class="roomName" routerLink="/rooms/{{ element.id }}">{{ element.name }}</a>
     </td>
   </ng-container>
 
   <!-- Type Column -->
   <ng-container matColumnDef="type">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       Type
     </th>
     <td mat-cell *matCellDef="let element">{{ element.type }}</td>
@@ -28,10 +19,7 @@
 
   <!-- pricePerNight Column -->
   <ng-container matColumnDef="pricePerNight">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       Price Per Night
     </th>
     <td mat-cell *matCellDef="let element">{{ element.pricePerNight }}</td>
@@ -39,10 +27,7 @@
 
   <!-- beds Column -->
   <ng-container matColumnDef="beds">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       Beds
     </th>
     <td mat-cell *matCellDef="let element">{{ element.beds }}</td>
@@ -50,10 +35,7 @@
 
   <!-- baths Column -->
   <ng-container matColumnDef="baths">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       Baths
     </th>
     <td mat-cell *matCellDef="let element">{{ element.baths }}</td>
@@ -61,10 +43,7 @@
 
   <!-- extraBeds Column -->
   <ng-container matColumnDef="extraBeds">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       Extra beds
     </th>
     <td mat-cell *matCellDef="let element">{{ element.extraBeds }}</td>
@@ -72,10 +51,7 @@
 
   <!-- guestCapacity Column -->
   <ng-container matColumnDef="guestCapacity">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       Guest Capacity
     </th>
     <td mat-cell *matCellDef="let element">{{ element.guestCapacity }}</td>
@@ -83,10 +59,7 @@
 
   <!-- view Column -->
   <ng-container matColumnDef="view">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       View
     </th>
     <td mat-cell *matCellDef="let element">{{ element.view }}</td>
@@ -94,10 +67,7 @@
 
   <!-- parking Column -->
   <ng-container matColumnDef="parking">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       Parking
     </th>
     <td mat-cell *matCellDef="let element">{{ element.parking }}</td>
@@ -105,10 +75,7 @@
 
   <!-- isPetFriendly Column -->
   <ng-container matColumnDef="isPetFriendly">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       Pet Friendly
     </th>
     <td mat-cell *matCellDef="let element">
@@ -118,10 +85,7 @@
 
   <!-- board Column -->
   <ng-container matColumnDef="board">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       Board
     </th>
     <td mat-cell *matCellDef="let element">{{ element.board }}</td>
@@ -129,10 +93,7 @@
 
   <!-- hasAirConditioning Column -->
   <ng-container matColumnDef="hasAirConditioning">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-    >
+    <th mat-header-cell *matHeaderCellDef>
       AC
     </th>
     <td mat-cell *matCellDef="let element">
@@ -144,14 +105,9 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
-<mat-paginator
-  [pageSizeOptions]="[5, 10, 20, 50, 100]"
-  [length]="roomsStore.total()"
-  [pageSize]="roomsStore.pageSize()"
+<mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" [length]="roomsStore.total()" [pageSize]="roomsStore.pageSize()"
   (page)="
     roomsStore.setPageSize($event.pageSize);
     roomsStore.setPage($event.pageIndex)
-  "
-  showFirstLastButtons
->
+  " showFirstLastButtons>
 </mat-paginator>
