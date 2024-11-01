@@ -34,9 +34,71 @@ export class GameStateService {
   });
   gameProgress$ = this._gameProgress.asObservable();
 
-  makeMove(move: number) {}
+  makeMove(move: number) {
+    // X / O / DRAW - early return
+    if (this._winner.value || this._isGameOver.value) {
+      return;
+    }
 
-  checkWinner() {}
+    /**
+     * gameProgress
+     * {
+     * X: []
+     * O: []
+     * }
+     */
+    const currentPlayer = this._currentPlayer.value; // X / O
+    const gameProgress = this._gameProgress.value;
 
-  resetGame() {}
+    if (gameProgress["X"].includes(move) || gameProgress["O"].includes(move)) {
+      return;
+    }
+
+    gameProgress[currentPlayer].push(move);
+    // console.log("GAME_PROGRESS", gameProgress);
+    this._gameProgress.next(gameProgress);
+
+    this.checkWinner();
+    this.checkDraw();
+    this.togglePlayer();
+  }
+
+  private togglePlayer() {
+    this._currentPlayer.next(this._currentPlayer.value === "X" ? "O" : "X");
+  }
+
+  private checkWinner() {
+    const currentPlayer = this._currentPlayer.value;
+    const gameProgress = this._gameProgress.value;
+
+    for (const pattern of this.WINNING_PATTERNS) {
+      // gameProgress[currentPlayer] => [2, 3, 1] => [1, 2, 3]
+      if (pattern.every(num => gameProgress[currentPlayer].includes(num))) {
+        this._winner.next(currentPlayer);
+        this._isGameOver.next(true);
+        // console.log("The Winner is:", currentPlayer);
+        return;
+      }
+    }
+  }
+
+  private checkDraw() {
+    const gameProgress = this._gameProgress.value;
+
+    if (
+      gameProgress["X"].length + gameProgress["O"].length === 9 &&
+      !this._isGameOver.value
+    ) {
+      this._isGameOver.next(true);
+      this._winner.next("DRAW");
+      return;
+    }
+  }
+
+  resetGame() {
+    this._currentPlayer.next("X");
+    this._winner.next(null);
+    this._isGameOver.next(false);
+    this._gameProgress.next({ X: [], O: [] });
+  }
 }

@@ -1,9 +1,49 @@
-<h1>Tic Tac Toe</h1>
+<!-- USING SUBJECTS / OBSERVABLES -->
+<!-- <h1>Tic Tac Toe</h1>
 
 <div class="board">
     @for (cell of board(); track $index) {
-    <div (click)="makeMove($index + 1)" class="cell">
+    <div (click)="makeMove($index)" class="cell">
         {{cell}}
     </div>
     }
 </div>
+
+<button (click)="reset()">Reset</button>
+
+<section>
+    @if(winner() && winner() !== "DRAW"){
+    <h3>The Winner Is: {{winner()}}</h3>
+    }
+
+    @if(winner() && winner() === "DRAW"){
+    <h3>The Game Ended in a Draw.</h3>
+    }
+</section> -->
+
+<!-- USING STORE -->
+<hr>
+<hr>
+<hr>
+
+<h1>Tic Tac Toe</h1>
+
+<div class="board">
+    @for (cell of board(); track $index) {
+    <div (click)="makeMove($index)" class="cell">
+        {{cell}}
+    </div>
+    }
+</div>
+
+<button (click)="reset()">Reset</button>
+
+<section>
+    @if(gameStore.winner() && gameStore.winner() !== "DRAW"){
+    <h3>The Winner Is: {{gameStore.winner()}}</h3>
+    }
+
+    @if(gameStore.winner() && gameStore.winner() === "DRAW"){
+    <h3>The Game Ended in a Draw.</h3>
+    }
+</section>

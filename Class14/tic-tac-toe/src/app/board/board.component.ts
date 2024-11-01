@@ -1,4 +1,7 @@
-import { Component, signal, OnInit } from "@angular/core";
+import { Component, signal, OnInit, inject } from "@angular/core";
+import { GameService } from "../services/game.service";
+import { GameStateService } from "../services/game-state.service";
+import { GameStore } from "../store/game.store";
 
 @Component({
   selector: "app-board",
@@ -9,18 +12,66 @@ import { Component, signal, OnInit } from "@angular/core";
 })
 export class BoardComponent implements OnInit {
   board = signal<string[]>([]);
+  currentPlayer = signal<"X" | "O">("X");
+  winner = signal<string | null>("");
+  isGameOver = signal<boolean>(false);
 
-  ngOnInit(): void {
+  // USING THE STORE
+  gameStore = inject(GameStore);
+
+  constructor(
+    private readonly gameService: GameService,
+    private readonly gameState: GameStateService
+  ) {}
+
+  private generateBoard() {
+    this.board.set(Array.from({ length: 9 }, () => String("")));
+  }
+
+  // USING OBSERVABLES
+  // makeMove(move: number) {
+  //   if (this.winner() || this.isGameOver()) {
+  //     return;
+  //   }
+
+  //   const board = this.board();
+  //   board[move] = this.currentPlayer();
+  //   this.board.set(board);
+
+  //   this.gameService.makeMove(move + 1);
+  // }
+
+  // USING THE STORE
+  makeMove(move: number) {
+    if (this.gameStore.winner() || this.gameStore.isGameOver()) {
+      return;
+    }
+
+    const board = this.board();
+    board[move] = this.gameStore.currentPlayer();
+    this.board.set(board);
+
+    this.gameService.makeMove(move + 1);
+  }
+
+  reset() {
+    this.gameService.resetGame();
     this.generateBoard();
   }
 
-  private generateBoard() {
-    this.board.set(
-      Array.from({ length: 9 }, (value, index) => String(index + 1))
-    );
-  }
+  ngOnInit(): void {
+    this.generateBoard();
 
-  makeMove(move: number) {
-    console.log("Move: ", move);
+    const sub_one = this.gameState.currentPlayer$.subscribe(currentPlayer => {
+      this.currentPlayer.set(currentPlayer);
+    });
+
+    const sub_two = this.gameState.winner$.subscribe(winner =>
+      this.winner.set(winner)
+    );
+
+    const sub_three = this.gameState.isGameOver$.subscribe(gameOver =>
+      this.isGameOver.set(gameOver)
+    );
   }
 }
