@@ -1,0 +1,9 @@
+<h1>Tic Tac Toe</h1>
+
+<div class="board">
+    @for (cell of board(); track $index) {
+    <div (click)="makeMove($index + 1)" class="cell">
+        {{cell}}
+    </div>
+    }
+</div>
